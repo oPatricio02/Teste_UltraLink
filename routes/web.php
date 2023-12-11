@@ -7,8 +7,11 @@ use App\Http\Controllers\TransacaoController;
 use App\Http\Controllers\UsuarioController;
 
 // Rotas para TransacaoController
+
 $router->post('/deposito', 'TransacaoController@deposito');
 $router->post('/transferencia', 'TransacaoController@transferencia');
+
+
 
 // Rotas para UserController
 $router->post('/registrar', 'UsuarioController@registrar');

@@ -20,7 +20,7 @@ class TransacaoService
         }
     }
 
-    public function validarTransferencia(array $data)
+    public function validarTransferencia(array $data,$userId)
     {
         // Validar que a quantia não seja 0 ou negativa
         if ($data['quantia'] <= 0) {
@@ -34,8 +34,10 @@ class TransacaoService
         }
 
         // Validar se a quantia é menor ou igual ao saldo do usuário
-        if ($data['quantia'] > $usuario->saldo) {
+        $usuarioOrigem = Usuario::where('id', $userId)->first();
+
+        if ($data['quantia'] > $usuarioOrigem->saldo) {
             throw ValidationException::withMessages(['quantia' => 'A quantia é maior que o saldo disponível na conta.']);
-    }
+        }
     }
 }

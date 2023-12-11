@@ -86,7 +86,6 @@ class UsuarioController extends Controller
     {
         $token = $request->bearerToken();
 
-
         if (!$token) {
             return response()->json(['error' => 'Token não fornecido'], 401);
         }
@@ -97,12 +96,23 @@ class UsuarioController extends Controller
             return response()->json(['error' => 'Token inválido'], 401);
         }
 
+        // Obtém o ID do usuário
+        $userId = $dadosUsuario->data->id;
 
+        // Consulta o banco de dados para obter mais informações do usuário
+        $usuario = Usuario::find($userId);
+
+        if (!$usuario) {
+            return response()->json(['error' => 'Usuário não encontrado'], 404);
+        }
+
+        // Retorna as informações desejadas
         return response()->json([
-            'id' => $dadosUsuario['id'],
-            'nome_completo' => $dadosUsuario['nome_completo'],
-            'email' => $dadosUsuario['email'],
-            'saldo' => $dadosUsuario['saldo'],
+            'id' => $usuario->id,
+            'nome_completo' => $usuario->nome_completo,
+            'email' => $usuario->email,
+            'numero_conta' => $usuario->numero_conta,
+            'saldo' => $usuario->saldo,
         ]);
     }
 
