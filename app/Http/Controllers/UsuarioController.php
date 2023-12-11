@@ -35,7 +35,7 @@ class UsuarioController extends Controller
                 'numero_endereco' => 'required|numeric',
             ]);
         } catch (ValidationException $e) {
-            // Trate os erros de validação aqui, se necessário
+
             return response()->json(['error' => $e->getMessage()], 422);
         }
 
@@ -55,7 +55,7 @@ class UsuarioController extends Controller
 
     private function gerarNumeroConta()
     {
-        // Gerar gerar número de conta
+        // Gerar número de conta
         return str_pad(mt_rand(1, 9999), 4, '0', STR_PAD_LEFT);
     }
 
@@ -106,7 +106,7 @@ class UsuarioController extends Controller
             return response()->json(['error' => 'Usuário não encontrado'], 404);
         }
 
-        // Retorna as informações desejadas
+        // Retorna as informações
         return response()->json([
             'id' => $usuario->id,
             'nome_completo' => $usuario->nome_completo,

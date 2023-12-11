@@ -31,18 +31,18 @@ class JwtService
         try {
             $meutoken = explode('.', $token);
 
-            // Verifica se o array possui a posição 1 antes de acessá-la
+
             if (isset($meutoken[1])) {
                 $tokenPayload = base64_decode($meutoken[1]);
 
-                // Verifica se a descompactação do payload foi bem-sucedida
+
                 if ($tokenPayload !== false) {
                     $decoded = JWT::jsonDecode($tokenPayload);
                     return $decoded;
                 }
             }
         } catch (\Exception $e) {
-            // Tratamento de erro aqui, se necessário
+
         }
 
         return null;

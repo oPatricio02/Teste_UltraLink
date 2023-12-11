@@ -39,7 +39,7 @@ class TransacaoController extends Controller
         // Validação dos dados de deposito
         $this->transacaoService->validarDeposito($request->all());
 
-        // Lógica para gerar o código de autorização DEP0000
+
         $codigo_autorizacao = 'DEP' . str_pad(mt_rand(1, 9999), 4, '0', STR_PAD_LEFT);
 
         // Salvar a transação no banco
@@ -85,7 +85,7 @@ class TransacaoController extends Controller
         // Validação dos dados de transferencia
         $this->transacaoService->validarTransferencia($request->all(),$userId);
 
-        // Lógica para gerar o código de autorização TRANSF0000
+
         $codigo_autorizacao = 'TRANSF' . str_pad(mt_rand(1, 9999), 4, '0', STR_PAD_LEFT);
 
 

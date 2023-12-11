@@ -27,7 +27,7 @@ class TransacaoService
             throw ValidationException::withMessages(['quantia' => 'A quantia deve ser maior que 0.']);
         }
 
-        // Validar que a conta de destino (usuário) existe
+        // Validar que a conta de destino existe
         $usuarioExiste = Usuario::where('numero_conta', $data['conta_destino'])->exists();
         if (!$usuarioExiste) {
             throw ValidationException::withMessages(['conta_destino' => 'A conta de destino não existe.']);
