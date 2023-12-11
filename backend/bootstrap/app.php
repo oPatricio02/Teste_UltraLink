@@ -80,6 +80,10 @@ $app->configure('app');
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
 
+$app->middleware([
+    \Fruitcake\Cors\HandleCors::class,
+]);
+
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -105,6 +109,11 @@ $app->configure('app');
 | can respond to, as well as the controllers that may handle them.
 |
 */
+
+$app->register(Fruitcake\Cors\CorsServiceProvider::class);
+
+$app->configure('cors');
+
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 
 

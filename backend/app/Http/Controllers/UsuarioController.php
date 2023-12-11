@@ -31,6 +31,10 @@ class UsuarioController extends Controller
                 'email' => 'required|email|unique:usuarios,email',
                 'senha' => 'required|min:6',
                 'cep' => 'required|numeric',
+                'logradouro' => 'nullable|string',
+                'bairro' => 'nullable|string',
+                'localidade' => 'nullable|string',
+                'uf' => 'nullable|string',
                 'complemento' => 'nullable|string',
                 'numero_endereco' => 'required|numeric',
             ]);
