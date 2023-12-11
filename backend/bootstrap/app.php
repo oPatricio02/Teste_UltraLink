@@ -110,7 +110,6 @@ $app->middleware([
 |
 */
 
-$app->register(Fruitcake\Cors\CorsServiceProvider::class);
 
 $app->configure('cors');
 
